@@ -3,7 +3,7 @@ import { mainApi } from '../../api/api'
 
 const Home = () => {
     useEffect(() => {
-        mainApi()
+        mainApi(1, 1)
     }, [])
     return (
         <div>
