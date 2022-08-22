@@ -1,7 +1,5 @@
 import axios from 'axios';
 
-const PROXY_URL = window.location.hostname === 'localhost' ? '' : '/proxy';
-
 export const mainApi = (rows, page, setDb) => {
     const url = `http://apis.data.go.kr/B551011/GoCamping/basedList?numOfRows=${rows}&pageNo=${page}&MobileOS=ETC&MobileApp=TEST&serviceKey=${process.env.REACT_APP_API_KEY}&_type=json`;
   
