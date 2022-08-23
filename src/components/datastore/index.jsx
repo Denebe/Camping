@@ -8,7 +8,7 @@ const Store = () => {
 
     const [db, setDb] = useState([])
     useEffect(() => {
-      mainApi(1, 1, setDb);
+      mainApi(10, 1, setDb);
     }, []);
   
 
