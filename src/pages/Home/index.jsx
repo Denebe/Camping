@@ -1,24 +1,15 @@
-import React, { useState, useEffect } from "react";
-import { mainApi } from "../../api/api";
-import KakaoMap from "../../components/kakaomap";
+import React from "react";
+import Store from "../../components/datastore";
 const Home = () => {
 
-  const [db, setDb] = useState([])
-  useEffect(() => {
-    mainApi(1, 1, setDb);
-  }, []);
-
-
+  
   return (
     <>
-    {
-      db.map((i) => (
-        <h1 key={Math.random()}>
-          {i.addr1}
-        </h1>
-      ))
-    }
-    <KakaoMap db={db} />
+      <h1>
+        이건 어디에 생겨?
+        
+      </h1>
+      <Store />
     </>
   );
 };
