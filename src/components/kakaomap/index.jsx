@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { Map, MapMarker, useMap } from "react-kakao-maps-sdk";
 import { useNavigate } from "react-router-dom";
 import { MyStore } from "../datastore";
+import { SideContainer } from "../box/styled";
 const { kakao } = window;
 let marker = [];
 
@@ -26,6 +27,7 @@ const KakaoMap = () => {
   }
 
   return (
+      <>
     <Map // 지도를 표시할 Container
       center={{
         // 지도의 중심좌표
@@ -37,7 +39,7 @@ const KakaoMap = () => {
         width: "100%",
         height: "450px",
       }}
-      level={3} // 지도의 확대 레벨
+      level={13} // 지도의 확대 레벨
     >
       {context && context.db.map((value) => (
         <EventMarkerContainer
@@ -47,6 +49,7 @@ const KakaoMap = () => {
         />
       ))}
     </Map>
+    </>
   );
 };
 
