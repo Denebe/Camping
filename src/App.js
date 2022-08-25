@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Home, Detail } from "./pages";
+import { Home, Detail, Search } from "./pages";
 import Nav from "./components/navbar";
 const App = () => {
   return (
@@ -9,6 +9,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/detail" element={<Detail />} />
+          <Route path="/search" element={<Search />} />
         </Routes>
     </BrowserRouter>
   );

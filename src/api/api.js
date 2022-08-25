@@ -24,6 +24,7 @@ export const mainApi = (rows, page, setDb, setTotal) => {
       }
     );
   };
+
   export const imgApi = (id, setDb) => {
     const url = `${PROXY_URL}/imageList?numOfRows=3&pageNo=1&MobileOS=ETC&MobileApp=TEST&serviceKey=${process.env.REACT_APP_API_KEY}&_type=json&contentId=${id}`;
   
@@ -45,3 +46,25 @@ export const mainApi = (rows, page, setDb, setTotal) => {
       }
     );
   };
+  export const locationApi = (mapX,mapY, setDb) => {
+    const url = `${PROXY_URL}/locationBasedList?numOfRows=3&pageNo=1&MobileOS=ETC&MobileApp=TEST&serviceKey=${process.env.REACT_APP_API_KEY}&_type=json&mapX=${mapX}&mapY=${mapY}&radius=200000`;
+  
+    const options = {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      url,
+    };
+    axios(options).then(
+      (r) => {
+        console.log('connect');
+        setDb(r.data.response.body.items.item);
+      },
+      (error) => {
+        console.log(error.response.data);
+      }
+    );
+  };
+
+  

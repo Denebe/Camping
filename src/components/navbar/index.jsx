@@ -25,7 +25,7 @@ const Nav = () => {
         </div>
 
           <Gnb>
-            <div>캠핑장소</div>
+            <div onClick={() => navigate('/search')}>캠핑장소</div>
             <div>캠핑장비</div>
             <div>캠핑일지</div>
           </Gnb>
