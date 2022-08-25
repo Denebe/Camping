@@ -27,7 +27,7 @@ const KakaoMap = (db) => {
       <Map // 지도를 표시할 Container
         center={{
           // 지도의 중심좌표
-          lat: 35.2714369,
+          lat: 37.2714369,
           lng: 126.9609528
         }}
         style={{

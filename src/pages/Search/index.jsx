@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { locationApi, searchApi } from "../../api/api";
 import KakaoMap from "../../components/kakaomap";
+import Box from "../../components/box";
+import { SideContainer, SideBox } from "../../components/box/styled";
 
 const Search = () => {
   const [state, setState] = useState({
@@ -64,24 +66,45 @@ const Search = () => {
   };
   return (
     <div>
-      <button onClick={onClick}>내 위치에서 가까운 캠핑장 확인하기</button>
-      <input
-        placeholder="장소를 검색하세요"
-        onChange={locChange}
-        onKeyPress={locKeypress}
-      />
-      {db ? (
-        <div>
-          <div style={{ width: "500px", height: "500px" }}>
-            <KakaoMap db={db} />
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          height: "100vh",
+        }}
+      >
+        {db ? (
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              marginTop: "10px",
+              width: "1200px",
+            }}
+          >
+            <SideContainer id="left">
+              <SideBox id="left">
+                <KakaoMap db={db} />
+              </SideBox>
+            </SideContainer>
+            <SideContainer id="right">
+              <SideBox id="right">
+                <button onClick={onClick}>
+                  내 위치에서 가까운 캠핑장 확인하기
+                </button>
+                <input
+                  placeholder="장소를 검색하세요"
+                  onChange={locChange}
+                  onKeyPress={locKeypress}
+                />
+                <Box db={db} />
+              </SideBox>
+            </SideContainer>
           </div>
-          {db.map((i) => (
-            <div key={Math.random()}>{i.facltNm}</div>
-          ))}
-        </div>
-      ) : (
-        <div>검색결과 없습니다.</div>
-      )}
+        ) : (
+          <div>검색결과 없습니다.</div>
+        )}
+      </div>
     </div>
   );
 };
