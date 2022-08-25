@@ -93,7 +93,7 @@ const Search = () => {
                   내 위치에서 가까운 캠핑장 확인하기
                 </button>
                 <input
-                  placeholder="장소를 검색하세요"
+                  placeholder="키워드로 검색됩니다."
                   onChange={locChange}
                   onKeyPress={locKeypress}
                 />

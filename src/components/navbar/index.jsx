@@ -26,7 +26,7 @@ const Nav = () => {
 
           <Gnb>
             <div onClick={() => navigate('/search')}>캠핑장소</div>
-            <div>캠핑장비</div>
+            <div onClick={() => navigate('/equip')}>캠핑장비</div>
             <div>캠핑일지</div>
           </Gnb>
       </div>
