@@ -12,7 +12,7 @@ const Store = () => {
   const [total, setTotal] = useState();
 
   useEffect(() => {
-    mainApi(1, Number(page), setDb, setTotal);
+    mainApi(3, Number(page), setDb, setTotal);
   }, [page]);
 
   const addClick = () => {
