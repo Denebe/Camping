@@ -22,7 +22,5 @@ export const Gnb = styled.div`
       transform: scaleX(1); /*a 속성에 hover시 기존 크기로*/
     }
   }
-  @media only screen and (max-width: 768px) {
-    display: none;
-  }
+
 `;
