@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { locationApi } from "../../api/api";
+import { locationApi, searchApi } from "../../api/api";
 import KakaoMap from "../../components/kakaomap";
 
 const Search = () => {
@@ -13,14 +13,17 @@ const Search = () => {
   });
 
   const [db, setDb] = useState([]);
-  useEffect(() => {
+
+  const [loc, setLoc] = useState("");
+
+  const onClick = () => {
     if (navigator.geolocation) {
       // GeoLocation을 이용해서 접속 위치를 얻어옵니다
       navigator.geolocation.getCurrentPosition(
         (position) => {
           locationApi(
-            position.coords.latitude,
             position.coords.longitude,
+            position.coords.latitude,
             setDb
           );
           setState((prev) => ({
@@ -48,16 +51,37 @@ const Search = () => {
         isLoading: false,
       }));
     }
-  }, []);
+  };
+
+  const locChange = (e) => {
+    setLoc(e.target.value);
+  };
+
+  const locKeypress = (e) => {
+    if (e.key === "Enter") {
+      searchApi(encodeURI(loc), setDb);
+    }
+  };
   return (
     <div>
-        <div style={{width: '500px', height:'500px'}}>
-      <KakaoMap db={db} />
-
+      <button onClick={onClick}>내 위치에서 가까운 캠핑장 확인하기</button>
+      <input
+        placeholder="장소를 검색하세요"
+        onChange={locChange}
+        onKeyPress={locKeypress}
+      />
+      {db ? (
+        <div>
+          <div style={{ width: "500px", height: "500px" }}>
+            <KakaoMap db={db} />
+          </div>
+          {db.map((i) => (
+            <div key={Math.random()}>{i.facltNm}</div>
+          ))}
         </div>
-      {db.map((i) => (
-        <div key={Math.random()}>{i.facltNm}</div>
-      ))}
+      ) : (
+        <div>검색결과 없습니다.</div>
+      )}
     </div>
   );
 };

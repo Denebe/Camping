@@ -49,9 +49,9 @@ const KakaoMap = (db) => {
             ))
           : db.db.map((value) => (
               <EventMarkerContainer
-                key={`EventMarkerContainer-${value.mapX}-${value.mapY}`}
+                key={`EventMarkerContainer-${value.mapY}-${value.mapX}`}
                 position={JSON.parse(
-                  `{"lat": ${value.mapX}, "lng": ${value.mapY}}`
+                  `{"lat": ${value.mapY}, "lng": ${value.mapX}}`
                 )}
                 content={value.facltNm}
               />
