@@ -1,12 +1,25 @@
 import React, { useContext } from "react";
 import { MyStore } from "../datastore";
-
+import { useNavigate } from "react-router-dom";
 const Box = () => {
   const context = useContext(MyStore);
+
+  const navigate = useNavigate();
+
   return (
     <div>
       {context.db.map((i) => (
-        <div key={Math.random()} style={{width: '100%', display:'flex'}}>
+        <div
+          key={Math.random()}
+          style={{ width: "100%", display: "flex" }}
+          onClick={() =>
+            navigate(`/detail`, {
+              state: {
+                data: i
+              },
+            })
+          }
+        >
           <div>
             <img
               style={{ width: "200px", height: "200px" }}
