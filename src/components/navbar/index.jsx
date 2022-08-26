@@ -19,7 +19,7 @@ const Nav = () => {
       }}
     >
       <div style={{width : '100%'}}>
-        <div onClick={() => navigate("/")}>
+        <div style={{cursor : 'pointer'}} onClick={() => navigate("/")}>
           <h1>우당탕탕 동완이와 함께하는</h1>
           <img style={{ height: "100px" }} src={Logo} alt="Logo" />
         </div>
